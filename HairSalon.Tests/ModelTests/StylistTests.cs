@@ -13,11 +13,11 @@ namespace HairSalon.TestTools
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=liz_kelley_test;";
     }
 
-    // public void Dispose()
-    // {
-    //   Stylist.ClearAll();
-    //   Client.ClearAll();
-    // }
+    public void Dispose()
+    {
+      // Stylist.ClearAll();
+      // Client.ClearAll();
+    }
 
     [TestMethod]
     public void StylistContructor_CreatesInstanceOfStylist_Stylist()
