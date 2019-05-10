@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Stylists
+namespace HairSalon
 {
   public class Startup
   {
@@ -44,6 +44,6 @@ namespace Stylists
   }
   public static class DBConfiguration
   {
-    public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=hair_salon;";
+    public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=liz_kelley;";
   }
 }

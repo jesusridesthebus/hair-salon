@@ -12,6 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Stylists\Stylists.csproj" />
+    <ProjectReference Include="..\HairSalon\HairSalon.csproj" />
   </ItemGroup>
 </Project>
