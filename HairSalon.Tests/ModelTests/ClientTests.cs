@@ -25,6 +25,26 @@ namespace HairSalon.TestTools
       Assert.AreEqual(typeof(Client), newClient.GetType());
     }
 
+    [TestMethod]
+    public void GetName_ReturnsName_String()
+    {
+      string name = "Billy Bob Client";
+      Client newClient = new Client(name, 1);
+      string result = newClient.Name;
+      Assert.AreEqual(name, result);
+    }
+
+    [TestMethod]
+    public void SetName_SetName_String()
+    {
+      string name = "Billy Bob Client";
+      Client newClient = new Client(name, 1);
+      string updatedName = "Billy Bob Face Client";
+      newClient.SetName(updatedName);
+      string result = updatedName.Name;
+      Assert.AreEqual(updatedName, result);
+    }
+
 
   }
 }
