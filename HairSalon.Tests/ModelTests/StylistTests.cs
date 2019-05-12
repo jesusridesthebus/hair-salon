@@ -3,7 +3,7 @@ using HairSalon.Models;
 using System.Collections.Generic;
 using System;
 
-namespace HairSalon.TestTools
+namespace HairSalon.Tests
 {
   [TestClass]
   public class StylistTest : IDisposable

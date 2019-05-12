@@ -39,10 +39,9 @@ namespace HairSalon.TestTools
     {
       string name = "Billy Bob Client";
       Client newClient = new Client(name, 1);
-      string updatedName = "Billy Bob Face Client";
-      newClient.SetName(updatedName);
-      string result = updatedName.Name;
-      Assert.AreEqual(updatedName, result);
+      newClient.Name = "Billy Bob Face Client";
+      string result = newClient.Name;
+      Assert.AreNotEqual(name, result);
     }
 
 
