@@ -44,6 +44,14 @@ namespace HairSalon.TestTools
       Assert.AreNotEqual(name, result);
     }
 
+    [TestMethod]
+    public void GetAll_ReturnsEmptyList_ItemList()
+    {
+      List<Client> newList = new List<Client> { };
+      List<Client> result = Client.GetAll();
+      CollectionAssert.AreEqual(newList, result);
+    }
+
 
   }
 }
