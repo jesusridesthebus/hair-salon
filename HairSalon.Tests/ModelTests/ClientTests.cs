@@ -104,5 +104,30 @@ namespace HairSalon.TestTools
       Assert.AreEqual(testId, result);
     }
 
+    [TestMethod]
+    public void Edit_UpdatesClientInDatabase_String()
+    {
+      Client testClient = new Client("Billy Bob", 1);
+      testClient.Save();
+      string secondName = "Client Face";
+      testClient.Edit(secondName);
+      string result = Client.Find(testClient.Id).Name;
+      Assert.AreEqual(secondName, result);
+    }
+
+    [TestMethod]
+    public void DeleteClient_DeletesClientFromDatabase_Id()
+    {
+      string client1 = "Billy Bob";
+      string client2 = "Client Face";
+      Client testClient1 = new Client(client1, 1);
+      Client testClient2 = new Client(client2, 1);
+      testClient1.Save();
+      testClient2.Save();
+      testClient1.DeleteClient(testClient1.Id);
+      int testId = testClient2.Id;
+      Assert.AreEqual(testId, Client.GetAll()[0].Id);
+    }
+
   }
 }
