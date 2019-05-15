@@ -53,6 +53,50 @@ namespace HairSalon.Tests
       CollectionAssert.AreEqual(testList, result);
     }
 
+    [TestMethod]
+    public void Save_DatabaseAssignsIdToCategory_Id()
+    {
+      Stylist testStylist = new Stylist("Freaky Styleyyy");
+      testStylist.Save();
+      Stylist savedStylist = Stylist.GetAll()[0];
+      int result = savedStylist.Id;
+      int testId = testStylist.Id;
+      Assert.AreEqual(testId, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllStylistObjects_StylistList()
+    {
+      string name1 = "Stylist";
+      string name2 = "Face";
+      Stylist newStylist1 = new Stylist(name1);
+      newStylist1.Save();
+      Stylist newStylist2 = new Stylist(name2);
+      newStylist2.Save();
+      List<Stylist> newList = new List<Stylist> { newStylist1, newStylist2 };
+      List<Stylist> result = Stylist.GetAll();
+      CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
+    public void Find_ReturnsStylistInDatabase_Stylist()
+    {
+      Stylist testStylist = new Stylist("Stylist Face");
+      testStylist.Save();
+      Stylist foundStylist = Stylist.Find(testStylist.Id);
+      Assert.AreEqual(testStylist, foundStylist);
+    }
+
+    [TestMethod]
+    public void GetClients_ReturnsEmptyClientList_ClientList()
+    {
+      string name = "stylistface";
+      Stylist newStylist = new Stylist(name);
+      List<Client> newList = new List<Client> { };
+      List<Client> result = newStylist.GetClients();
+      CollectionAssert.AreEqual(newList, result);
+    }
+
 
   }
 }
