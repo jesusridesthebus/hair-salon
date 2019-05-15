@@ -15,8 +15,8 @@ namespace HairSalon.Tests
 
     public void Dispose()
     {
-      // Stylist.ClearAll();
-      // Client.ClearAll();
+      Stylist.ClearAll();
+      Client.ClearAll();
     }
 
     [TestMethod]
@@ -24,6 +24,33 @@ namespace HairSalon.Tests
     {
       Stylist newStylist = new Stylist("test stylist");
       Assert.AreEqual(typeof(Stylist), newStylist.GetType());
+    }
+
+    [TestMethod]
+    public void GetName_ReturnsName_String()
+    {
+      string name = "Test Stylist";
+      Stylist newStylist = new Stylist(name);
+      string result = newStylist.Name;
+      Assert.AreEqual(name, result);
+    }
+
+    [TestMethod]
+    public void Equals_ReturnsTrueIfNamesAreSame_Stylist() //doesn't work?!?!
+    {
+      Stylist firstStylist = new Stylist("Stylist Face");
+      Stylist secondStylist = new Stylist("Stylist Face");
+      Assert.AreEqual(firstStylist, secondStylist);
+    }
+
+    [TestMethod]
+    public void Save_SavesStylistToDatabase_StylistList()
+    {
+      Stylist testStylist = new Stylist("Freaky Styley");
+      testStylist.Save();
+      List<Stylist> result = Stylist.GetAll();
+      List<Stylist> testList = new List<Stylist>{testStylist};
+      CollectionAssert.AreEqual(testList, result);
     }
 
 
