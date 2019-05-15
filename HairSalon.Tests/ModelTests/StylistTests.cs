@@ -36,7 +36,7 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void Equals_ReturnsTrueIfNamesAreSame_Stylist() //doesn't work?!?!
+    public void Equals_ReturnsTrueIfNamesAreSame_Stylist()
     {
       Stylist firstStylist = new Stylist("Stylist Face");
       Stylist secondStylist = new Stylist("Stylist Face");
