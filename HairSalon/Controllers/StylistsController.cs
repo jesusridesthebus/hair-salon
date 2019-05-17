@@ -47,7 +47,7 @@ namespace HairSalon.Controllers
     {
       Stylist stylist = Stylist.Find(stylistId);
       Client client = Client.Find(clientId);
-      stylist.AddClient(client);
+      stylist.Add(client);
       return RedirectToAction("Show", new Client{ Id = stylistId });
     }
   }

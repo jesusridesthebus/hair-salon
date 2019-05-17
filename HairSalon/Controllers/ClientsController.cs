@@ -8,6 +8,13 @@ namespace HairSalon.Controllers
   public class ClientsController : Controller
 
   {
+    [HttpGet("/clients")]
+    public ActionResult Index()
+    {
+      List<Client> allClients = Client.GetAll();
+      return View(allClients);
+    }
+
     // [HttpGet("/clients")]
     // public ActionResult Create(string name)
     // {
@@ -22,6 +29,15 @@ namespace HairSalon.Controllers
     {
       Stylist stylist = Stylist.Find(stylistId);
       return View(stylist);
+    }
+
+    [HttpPost("/items")]
+    public ActionResult Create(string name)
+    {
+      Client newClient = new Client(name);
+      newClient.Save();
+      List<Client> allClients = Client.GetAll();
+      return View("Index", allClients);
     }
 
 
