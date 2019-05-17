@@ -16,5 +16,14 @@ namespace HairSalon.Tests
       IActionResult view = controller.Create("Billy Bob");
       Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
     }
+
+    [TestMethod]
+    public void Create_RedirectsToCorrectAction_Index()
+    {
+      StylistsController controller = new StylistsController();
+      RedirectToActionResult actionResult = controller.Create("stylist face") as RedirectToActionResult;
+      string result = actionResult.ActionName;
+      Assert.AreEqual(result, "Index");
+    }
   }
 }

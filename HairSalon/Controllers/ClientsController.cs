@@ -31,10 +31,10 @@ namespace HairSalon.Controllers
       return View(stylist);
     }
 
-    [HttpPost("/items")]
-    public ActionResult Create(string name)
+    [HttpPost("/clients")]
+    public ActionResult Create(string name, int stylistId, int id = 0)
     {
-      Client newClient = new Client(name);
+      Client newClient = new Client(name, stylistId, id);
       newClient.Save();
       List<Client> allClients = Client.GetAll();
       return View("Index", allClients);
