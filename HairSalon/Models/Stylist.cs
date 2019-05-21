@@ -90,9 +90,9 @@ namespace HairSalon.Models
       stylist_id.Value = Id;
       cmd.Parameters.Add(stylist_id);
       MySqlParameter item_id = new MySqlParameter();
-      ClientId.ParameterName = "@ItemId";
-      clientId.Value = newClient.Id;
-      cmd.Parameters.Add(clientId);
+      client_id.ParameterName = "@ItemId";
+      client_id.Value = newClient.Id;
+      cmd.Parameters.Add(client_id);
       cmd.ExecuteNonQuery();
       conn.Close();
       if(conn != null)
