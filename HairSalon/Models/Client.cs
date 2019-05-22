@@ -17,6 +17,11 @@ namespace HairSalon.Models
       Id = id;
     }
 
+    public override int GetHashCode()
+    {
+        return this.Id.GetHashCode();
+    }
+
     public static List<Client> GetAll()
     {
       List<Client> allClients = new List<Client> {};

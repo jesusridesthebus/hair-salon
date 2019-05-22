@@ -13,6 +13,12 @@ namespace HairSalon.Models
     {
       Name = stylistName;
       Id = id;
+      Clients = new List<Client>{};
+    }
+
+    public override int GetHashCode()
+    {
+        return this.Id.GetHashCode();
     }
 
     public static List<Stylist> GetAll()
@@ -79,7 +85,7 @@ namespace HairSalon.Models
       }
     }
 
-    public void AddStylist(Client newClient)
+    public void AddClient(Client newClient)
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
@@ -89,8 +95,8 @@ namespace HairSalon.Models
       stylist_id.ParameterName = "@StylistId";
       stylist_id.Value = Id;
       cmd.Parameters.Add(stylist_id);
-      MySqlParameter item_id = new MySqlParameter();
-      client_id.ParameterName = "@ItemId";
+      MySqlParameter client_id = new MySqlParameter();
+      client_id.ParameterName = "@ClientId";
       client_id.Value = newClient.Id;
       cmd.Parameters.Add(client_id);
       cmd.ExecuteNonQuery();
@@ -101,7 +107,7 @@ namespace HairSalon.Models
       }
     }
 
-    public void Edit(string newName)
+    public void EditStylist(string newName)
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
@@ -124,7 +130,7 @@ namespace HairSalon.Models
       }
     }
 
-    public void Delete(int Id)
+    public void DeleteStylist(int Id)
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();

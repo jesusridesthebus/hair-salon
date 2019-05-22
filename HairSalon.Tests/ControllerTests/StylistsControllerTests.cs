@@ -25,5 +25,14 @@ namespace HairSalon.Tests
       string result = actionResult.ActionName;
       Assert.AreEqual(result, "Index");
     }
+
+    [TestMethod]
+    public void Index_HasCorrectModelType_ClientList()
+    {
+      ClientsController controller = new ClientsController();
+      ViewResult indexView = controller.Index() as ViewResult;
+      var result = indexView.ViewData.Model;
+      Assert.IsInstanceOfType(result, typeof(List<Client>));
+    }
   }
 }

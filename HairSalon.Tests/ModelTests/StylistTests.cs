@@ -117,22 +117,5 @@ namespace HairSalon.Tests
       List<Client> resultClientList = testStylist.GetClients();
       CollectionAssert.AreEqual(testClientList, resultClientList);
     }
-
-    [TestMethod]
-    public void Delete_DeleteStylistFromDatabase_StylistList()
-    {
-      Stylist newStylist = new Stylist("styley");
-      Client testClient = new Client("billy bob", testClient.Id);
-      testClient.Save();
-      string testName = "face mcface";
-      Client testClient2 = new Client(testName, stylistId);
-      testClient2.Save();
-      testClient.AddClient(testClient, clientId);
-      testClient.DeleteClient();
-      List<Stylist> resultClientStylists = testClient.Stylist;
-      List<Stylist> testClientStylists = new List<Stylist> {};
-      CollectionAssert.AreEqual(testClientStylists, resultClientStylists);
-    }
-
   }
 }
