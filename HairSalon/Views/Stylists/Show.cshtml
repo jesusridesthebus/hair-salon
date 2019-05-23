@@ -1,12 +1,23 @@
-<h3>Here are all the clients for this stylist:</h3>
+<h3>Here are all the clients for stylist @Model["stylist"].Name:</h3>
 
-<ol>
-@foreach (var client in @Model["clients"])
+@if(Model["clients"].Count == 0)
 {
-  <li><a href='/stylists/@Model["stylist"].Id/clients/@client.Id'>@client.Name</a></li>
+  <p>No Clients for stylist @Model["stylist"].Name</p>
 }
-</ol>
-
+@if(Model["clients"].Count != 0)
+{
+  <ol>
+  @foreach (var client in @Model["clients"])
+  {
+    <li><a href='/stylists/@Model["stylist"].Id/clients/@client.Id'>@client.Name</a></li>
+    <!-- <li><a href='/stylists/@Model["stylist"].Id'>@client.Name</a></li> -->
+  }
+  </ol>
+}
 <p><a href='/stylists/@Model["stylist"].Id/clients/new'>Add a new client</a></p>
 <p><a href='/stylists'>Return to stylist list</a></p>
 <p><a href='/'>Return to Main Page</a></p>
+<p><a href='/stylists/@Model["stylist"].Id/edit'>Edit Stylist @Model["stylist"].Name</a></p>
+<form action='/stylists/@Model["stylist"].Id/delete' method="post">
+  <button type="submit">Delete Stylist @Model["stylist"].Name</button>
+</form>

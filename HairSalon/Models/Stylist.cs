@@ -135,10 +135,10 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"DELETE FROM stylists WHERE id = @thisId;";
+      cmd.CommandText = @"DELETE FROM stylists WHERE id = @stylist_id; DELETE FROM stylist_client WHERE stylist_id = @stylist_id;";
       MySqlParameter thisId = new MySqlParameter();
-      thisId.ParameterName = "@thisId";
-      thisId.Value = Id;
+      thisId.ParameterName = "@stylist_id";
+      thisId.Value = this.Id;
       cmd.Parameters.Add(thisId);
       cmd.ExecuteNonQuery();
       conn.Close();
