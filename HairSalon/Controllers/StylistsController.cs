@@ -93,18 +93,18 @@ namespace HairSalon.Controllers
       return View(model);
     }
 
-    [HttpPost("/stylists/{stylistId}")]
-    public ActionResult Edit(int stylistId, string editedName)
-    {
-      Stylist stylist = Stylist.Find(stylistId);
-      stylist.Edit(stylistId, editedName);
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      List<Client> stylistClients = stylist.Clients;
-      List<Client> allClients = Client.GetAll();
-      model.Add("allClients", allClients);
-      model.Add("clients", stylistClients);
-      model.Add("stylist", stylist);
-      return View("Show", model);
-    }
+    // [HttpPost("/stylists/{stylistId}")]
+    // public ActionResult Edit(int stylistId, string editedName)
+    // {
+    //   Stylist stylist = Stylist.Find(stylistId);
+    //   stylist.Edit(stylistId, editedName);
+    //   Dictionary<string, object> model = new Dictionary<string, object>();
+    //   List<Client> stylistClients = stylist.Clients;
+    //   List<Client> allClients = Client.GetAll();
+    //   model.Add("allClients", allClients);
+    //   model.Add("clients", stylistClients);
+    //   model.Add("stylist", stylist);
+    //   return View("Show", model);
+    // }
   }
 }
