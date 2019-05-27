@@ -34,11 +34,12 @@ namespace HairSalon.Controllers
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Stylist selectedStylist = Stylist.Find(stylistId);
-      List<Client> stylistClients = selectedStylist.Clients;
-      List<Client> allClients = Client.GetAll();
+      List<Specialty> specialtyDescription = selectedStylist.GetSpecialties();
+      List<Specialty> specialty = Specialty.GetAll();
+      List<Client> allClients = selectedStylist.GetClients();
       model.Add("stylist", selectedStylist);
-      model.Add("clients", stylistClients);
-      model.Add("allClients", allClients);
+      model.Add("clients", allClients);
+      model.Add("specialty", specialty);
       return View("Show", model);
     }
 
