@@ -1,0 +1,12 @@
+<h1>Edit Specialties</h1>
+<hr>
+
+<h3>Edit Specialty: @Model["specialty"].Description</h3>
+
+<form action="/specialties/@Model["specialty"].Id" method="post">
+  <label for="description">Description:</label>
+  <input type="text" name="description" value=""@Model["specialty"].Description">
+  <button type="submit">Edit</button>
+</form>
+
+<p><a href="/specialties/@Model["specialty"].Id">Return to previous page</a></p>

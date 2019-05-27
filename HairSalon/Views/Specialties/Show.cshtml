@@ -1,0 +1,30 @@
+@using HairSalon.Models;
+
+<h1>Specialties</h1>
+<h3>Specialty: @Model["selectedSpecialty"].Description</h3>
+<hr>
+
+@if(@Model["stylist"].Count != 0)
+{
+  <h4>Stylist @Model["stylist"].Name has the following specialties:</h4>
+  <ul>
+    @foreach(Stylist stylist in @Model["stylistName"])
+    {
+      <li>@stylist.Name</li>
+    }
+  </ul>
+}
+
+<h3>Add a stylist to @Model["selectedSpecialty"].Description specialty</h3>
+
+<form action="/specialties/@Model["selectedSpecialty"].Id/stylists/new" method="post">
+  <label for="stylistId">Select a stylist</label>
+  <select id="stylistId" name="stylistId" type="text">
+    @foreach(var stylist in @Model["allStylists"])
+    {
+      <option value="@stylist.Id">@stylist.Name</option>
+    }
+  </select>
+  <button type="submit">Clear specialties</button>
+</form>
+<p><a href="/">Return to main page</a></p>
